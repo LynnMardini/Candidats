@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name of the candidat</title>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            return null;
+        }
+        window.onload = function() {
+            var message = getQueryVariable("message");
+            if (message) {
+                document.getElementById("message").innerText = message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 id="message">Hello</h1>
+</body>
+</html>
