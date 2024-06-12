@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Name of the candidat</title>
+    <title>Message Page</title>
     <script>
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
@@ -17,12 +17,11 @@
         window.onload = function() {
             var message = getQueryVariable("message");
             if (message) {
-                document.getElementById("message").innerText = message;
+                document.body.innerText = message;
             }
         }
     </script>
 </head>
 <body>
-    <h1 id="message">Hello</h1>
 </body>
 </html>
