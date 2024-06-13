@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Available</title>
+    <title>Availability</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="array-container">
-        <h2>Array Values</h2>
+        <h2>Availability Times</h2>
         <div id="array-values"></div>
     </div>
 
@@ -32,13 +32,13 @@
         // Function to parse URL parameters
         function parseParams(url) {
             const params = new URL(url).searchParams;
-            return params.get('array');
+            return params.get('message');
         }
 
         // Function to display array values
         function displayArrayValues(arrayString) {
             const arrayContainer = document.getElementById('array-values');
-            const array = JSON.parse(arrayString);
+            const array = JSON.parse(arrayString.replace(/%20/g, ' ')); // Replace %20 with spaces
 
             array.forEach(item => {
                 const itemDiv = document.createElement('div');
