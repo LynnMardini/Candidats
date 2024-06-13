@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Available</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .array-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 300px;
+            margin: auto;
+        }
+        .array-item {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="array-container">
+        <h2>Array Values</h2>
+        <div id="array-values"></div>
+    </div>
+
+    <script>
+        // Function to parse URL parameters
+        function parseParams(url) {
+            const params = new URL(url).searchParams;
+            return params.get('array');
+        }
+
+        // Function to display array values
+        function displayArrayValues(arrayString) {
+            const arrayContainer = document.getElementById('array-values');
+            const array = JSON.parse(arrayString);
+
+            array.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('array-item');
+                itemDiv.textContent = item;
+                arrayContainer.appendChild(itemDiv);
+            });
+        }
+
+        // On page load, get array parameter from URL and display values
+        window.onload = function() {
+            const arrayParam = parseParams(window.location.href);
+            if (arrayParam) {
+                displayArrayValues(arrayParam);
+            } else {
+                // Handle case where no array parameter is found
+                const arrayContainer = document.getElementById('array-values');
+                arrayContainer.textContent = 'No array parameter found in URL.';
+            }
+        };
+    </script>
+</body>
+</html>
